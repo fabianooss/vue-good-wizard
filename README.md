@@ -1,32 +1,52 @@
 # vue-good-wizard
+
+[![npm](https://img.shields.io/npm/dm/vue-good-wizard.svg?style=flat-square)](https://www.npmjs.com/package/vue-good-wizard)
+[![npm](https://img.shields.io/github/package-json/v/xaksis/vue-good-wizard.svg?style=flat-square)](https://github.com/xaksis/vue-good-wizard/releases)
+[![npm](https://img.shields.io/github/license/xaksis/vue-good-wizard.svg?style=flat-square)](https://github.com/xaksis/vue-good-wizard/blob/master/LICENSE)
+[![](https://data.jsdelivr.com/v1/package/npm/vue-good-wizard/badge)](https://www.jsdelivr.com/package/npm/vue-good-wizard)
+
 An easy and clean VueJS 2.x wizard plugin
 
 ![Basic Screenshot](README/images/vue-good-wizard.gif)
 
 ## Live Demo
 
-[vue-good-wizard Demo](https://xaksis.github.io/vue-good-demos/#/simple-wizard)
+[vue-good-wizard Demo](https://jsfiddle.net/aks9800/ygkruetq/)
+
+<a href="https://www.buymeacoffee.com/68BUXR1d9" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+
+## Follow the project progress live
+[Vue-good-wizard Project](https://timerbit.com/#/public/U1kivTdfbz4T3hJ3E7BJ)
 
 ## Getting Started
-
-### Prerequisites
-
-The plugin is meant to be used with existing VueJS 2.x projects.
-
 
 ### Installing
 
 Install with npm:
-```
+```bash
 npm install --save vue-good-wizard
 ```
 
 import into project:
-```
+```js
 import Vue from 'vue';
 import VueGoodWizard from 'vue-good-wizard';
 
 Vue.use(VueGoodWizard);
+```
+
+**or**
+
+import into component: 
+
+```js
+// within your component script tag
+import { GoodWizard } from 'vue-good-wizard';
+
+// in your components
+components: {
+  'vue-good-wizard': GoodWizard,
+}
 ```
 
 ## Example Usage
@@ -79,6 +99,9 @@ export default {
         {
           label: 'Apply',
           slot: 'page4',
+          options: {
+            nextDisabled: true, // control whether next is disabled or not
+          },
         }
       ],
     };
@@ -155,6 +178,71 @@ function(currentPage){
   return true;
 }
 </pre>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <strong>Label options</strong>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        previousStepLabel
+      </td>
+      <td>
+        label for previous step
+      </td>
+      <td>
+       default: 'Back'
+      </td>
+    </tr>
+    <tr>
+      <td>
+        nextStepLabel
+      </td>
+      <td>
+        label for next step
+      </td>
+      <td>
+       default: 'Next'
+      </td>
+    </tr>
+    <tr>
+      <td>
+        finalStepLabel
+      </td>
+      <td>
+        label for final step
+      </td>
+      <td>
+       default: 'Save'
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <strong>Useful internal functions</strong>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        goNext()
+      </td>
+      <td>
+        for async usecase, you'd want to go next only after your async function is done. See [advanced usecase](https://github.com/xaksis/vue-good-wizard#advanced-usecase---call-next-or-back-asynchronously)
+      </td>
+      <td>
+       `this.$refs['my-wizard'].goNext(true)` 
+      </td>
+    </tr>
+    <tr>
+      <td>
+        goTo(step)
+      </td>
+      <td>
+        if you want to go to a step programmatically, you can use this method
+      </td>
+      <td>
+       `this.$refs['my-wizard'].goTo(2)` // go to 3rd step.
       </td>
     </tr>
   </tbody>
@@ -247,7 +335,7 @@ export default {
 
 ## Authors
 
-* **Akshay Anand** - *Initial work* - [xaksis](https://github.com/xaksis)
+* **Akshay Anand** - [xaksis](https://github.com/xaksis)
 
 ## License
 
